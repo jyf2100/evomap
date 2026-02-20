@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from app.api import api_router
 from app.config import settings
 from app.database import init_db
 
@@ -21,6 +22,9 @@ app = FastAPI(
     version=settings.app_version,
     lifespan=lifespan,
 )
+
+# Include API routes
+app.include_router(api_router)
 
 
 @app.get("/health")
