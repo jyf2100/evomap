@@ -1,9 +1,9 @@
-FROM node:20-alpine as builder
+FROM node:20-slim as builder
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci
+COPY package.json ./
+RUN npm install --legacy-peer-deps --noproxy=registry.npmjs.org --proxy= --https-proxy=
 
 COPY . .
 RUN npm run build

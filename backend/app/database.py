@@ -1,4 +1,5 @@
 """Database configuration and session management."""
+from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.config import settings
@@ -21,7 +22,7 @@ async def init_db():
     """Initialize database connection."""
     async with engine.begin() as conn:
         # Test connection
-        await conn.execute("SELECT 1")
+        await conn.execute(text("SELECT 1"))
 
 
 async def get_session() -> AsyncSession:
