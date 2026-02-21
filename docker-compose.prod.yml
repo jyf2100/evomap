@@ -1,0 +1,14 @@
+# Production Docker Compose configuration
+# Usage: docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+services:
+  backend:
+    environment:
+      DEBUG: "false"
+    restart: always
+
+  frontend:
+    restart: always
+
+  postgres:
+    restart: always
